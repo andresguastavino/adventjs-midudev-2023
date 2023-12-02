@@ -1,5 +1,5 @@
 function findFirstRepeated(gifts) {
-  if (!gifts.length) {
+  if (!gifts?.length) {
     return -1
   }
 
@@ -37,3 +37,16 @@ console.log(firstRepeatedId4) // 7
 const giftIds5 = [5, 1, 3, 2, 8, 8]
 const firstRepeatedId5 = findFirstRepeated(giftIds5)
 console.log(firstRepeatedId5) // 8
+
+const giftIds6 = [5, 1, 3, 2, 8, 9]
+const firstRepeatedId6 = findFirstRepeated(giftIds6)
+console.log(firstRepeatedId6) // -1
+
+
+const giftIds7 = []
+const firstRepeatedId7 = findFirstRepeated(giftIds7)
+console.log(firstRepeatedId7) // -1
+
+const giftIds8 = undefined
+const firstRepeatedId8 = findFirstRepeated(giftIds8)
+console.log(firstRepeatedId8) // -1
