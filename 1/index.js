@@ -3,16 +3,16 @@ function findFirstRepeated(gifts) {
     return -1
   }
 
-  let repeatedGift = -1
-  let giftsAux = [ gifts[0] ]
-
-  while (repeatedGift === -1 && giftsAux.length < gifts.length) {
-    const currentGift = gifts[giftsAux.length]
-    repeatedGift = giftsAux.includes(currentGift) ? currentGift : repeatedGift
-    giftsAux.push(currentGift)
+  let giftId = -1
+  let visited = [ gifts[0] ]
+  let unvisited = gifts.slice(1, gifts.length)
+  while (giftId === -1 && visited.length !== gifts.length) {
+    let currentGift = unvisited.shift()
+    giftId = visited.includes(currentGift) ? currentGift : -1
+    visited.push(currentGift)
   }
 
-  return repeatedGift
+  return giftId
 }
 
 const giftIds = [2, 1, 3, 5, 3, 2]
