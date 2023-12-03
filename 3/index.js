@@ -1,27 +1,12 @@
 function findNaughtyStep(original, modified) {
-  original = original || ''
-  modified = modified || ''
+  if (original === modified) return ''
 
-  let naughtyStep = ''
-  const originalArr = original.split('')
-  const originalArrLength = originalArr.length
-  const modifiedArr = modified.split('')
-  const modifiedArrLength = modifiedArr.length
+  let i = 0
+  while (original.at(i) === modified.at(i)) {
+    i++
+  }
 
-  const iterator = originalArrLength > modifiedArrLength
-    ? originalArr
-    : modifiedArr
-  const comparer = originalArrLength > modifiedArrLength
-    ? modifiedArr
-    : originalArr
-
-  iterator.every((currentChar, i) => {
-    let compareAgainst = comparer[i] || ''
-    naughtyStep = currentChar !== compareAgainst ? currentChar : ''
-    return naughtyStep === ''
-  })
-
-  return naughtyStep
+  return (original.length > modified.length ? original : modified).at(i)
 }
 
 console.log('1: ',findNaughtyStep('abcd', 'abcde')) // e
@@ -31,6 +16,3 @@ console.log('4: ',findNaughtyStep('o', 'os')) // s
 console.log('5: ',findNaughtyStep('ayh', 'ah')) // y
 console.log('6: ',findNaughtyStep('dfajrq', 'fajrq')) // d
 console.log('7: ',findNaughtyStep('dfajrq', 'dfa')) // j
-console.log('8: ',findNaughtyStep(undefined, undefined)) // ''
-console.log('9: ',findNaughtyStep('abc', undefined)) // 'a'
-console.log('10: ',findNaughtyStep(undefined, 'abc')) // 'a'
