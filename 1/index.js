@@ -42,7 +42,6 @@ const giftIds6 = [5, 1, 3, 2, 8, 9]
 const firstRepeatedId6 = findFirstRepeated(giftIds6)
 console.log(firstRepeatedId6) // -1
 
-
 const giftIds7 = []
 const firstRepeatedId7 = findFirstRepeated(giftIds7)
 console.log(firstRepeatedId7) // -1
@@ -50,3 +49,7 @@ console.log(firstRepeatedId7) // -1
 const giftIds8 = undefined
 const firstRepeatedId8 = findFirstRepeated(giftIds8)
 console.log(firstRepeatedId8) // -1
+
+const giftIds9 = [ 3 ]
+const firstRepeatedId9 = findFirstRepeated(giftIds9)
+console.log(firstRepeatedId9) // -1

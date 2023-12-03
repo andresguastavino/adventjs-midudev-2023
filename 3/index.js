@@ -8,12 +8,16 @@ function findNaughtyStep(original, modified) {
   const modifiedArr = modified.split('')
   const modifiedArrLength = modifiedArr.length
 
-  const iterator = originalArrLength > modifiedArrLength ? originalArr : modifiedArr
-  const comparer = originalArrLength > modifiedArrLength ? modifiedArr : originalArr
+  const iterator = originalArrLength > modifiedArrLength
+    ? originalArr
+    : modifiedArr
+  const comparer = originalArrLength > modifiedArrLength
+    ? modifiedArr
+    : originalArr
 
-  iterator.every((char, i) => {
+  iterator.every((currentChar, i) => {
     let compareAgainst = comparer[i] || ''
-    naughtyStep = char !== compareAgainst ? char : ''
+    naughtyStep = currentChar !== compareAgainst ? currentChar : ''
     return naughtyStep === ''
   })
 
