@@ -1,18 +1,8 @@
 function findFirstRepeated(gifts) {
-  if (!gifts?.length) {
-    return -1
-  }
-
-  let giftId = -1
-  let visited = [ gifts[0] ]
-  let unvisited = gifts.slice(1, gifts.length)
-  while (giftId === -1 && visited.length !== gifts.length) {
-    let currentGift = unvisited.shift()
-    giftId = visited.includes(currentGift) ? currentGift : -1
-    visited.push(currentGift)
-  }
-
-  return giftId
+  const repeated = gifts?.find((gift, i) => {
+    return gifts.slice(0, i).indexOf(gift) !== -1
+  })
+  return repeated !== undefined ? repeated : -1
 }
 
 const giftIds = [2, 1, 3, 5, 3, 2]
@@ -53,3 +43,7 @@ console.log(firstRepeatedId8) // -1
 const giftIds9 = [ 3 ]
 const firstRepeatedId9 = findFirstRepeated(giftIds9)
 console.log(firstRepeatedId9) // -1
+
+const giftIds10 = [ undefined, undefined ]
+const firstRepeatedId10 = findFirstRepeated(giftIds10)
+console.log(firstRepeatedId10) // -1
