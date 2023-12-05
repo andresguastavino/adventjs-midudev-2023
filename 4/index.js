@@ -1,24 +1,22 @@
 function decode(message) {
-  let i = 0
-  let lvlsIndex = []
-  while (i < message.length) {
-    let char = message.at(i)
-    if (char === '(') {
-      lvlsIndex.push(i)
-    } else if (char === ')') {
-      let openingIndx = lvlsIndex.pop()
-      let inverted = message.substring(openingIndx + 1, i)
-        .split('')
-        .reverse()
-        .join('')
-      message = message.substring(0, openingIndx + 1) 
-        + inverted
-        + message.substring(i, message.length)
-    }
-    i++
+  let from = message.lastIndexOf('(')
+  while (from !== -1) {
+    let to = message.indexOf(')', from)
+    let inverted = message.substring(from, to + 1)
+      .split('')
+      .reverse()
+      .join('')
+      .replace('(', '')
+      .replace(')', '')
+
+    message = message.substring(0, from) 
+      + inverted
+      + message.substring(to + 1, message.length)
+
+    from = message.lastIndexOf('(')
   }
 
-  return message.replaceAll('(', '').replaceAll(')', '')
+  return message
 }
 
 const a = decode('hola (odnum)')
