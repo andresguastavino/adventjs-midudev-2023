@@ -1,9 +1,11 @@
 function maxDistance(movements) {
-  const movementsArr = movements.split('')
-  const countLeft = movementsArr.filter(char => char === '<').length
-  const countRight = movementsArr.filter(char => char === '>').length
-  const countRandom = movementsArr.filter(char => char === '*').length
-  return Math.abs(countLeft - countRight) + countRandom
+  const countObj = {
+    '>': 0,
+    '<': 0,
+    '*': 0
+  }
+  movements.split('').forEach(char => countObj[char] = countObj[char]+1)
+  return Math.abs(countObj['>'] - countObj['<']) + countObj['*']
 }
 
 const movements = '>>*<'
