@@ -1,32 +1,25 @@
 function drawGift(size, symbol) {
-  if (size === 1) {
-    return '#\n'
+  let result = []
+
+  let f = '#'
+  for (let i = 1; i < size; i++) {
+    let a = (' ').repeat(size - 1 - i)
+    let b = symbol.repeat(size - 2)
+    let c = symbol.repeat(size + i - size - 1)
+    result[i] = a + '#' + b + '#' + c + '#'
+    result[size * 2 - i - 2] = '#' + b + '#' + c + '#'
+
+    let d = ('#').repeat(size)
+    result[0] = (' ').repeat(size - 1) + d
+    result[size * 2 - 2] = d
+
+    f = ('#').repeat(size) + symbol.repeat(size - 2) + '#'
   }
 
-  let a = ''
-  let b = ''
-  let c = ''
-  for (let i = 0; i <= size; i++) {
-    a += '#'
-    b += symbol
-    c += ' '
-  }
+  result[size - 1] = f
+  result.push('')
 
-  let top = c.substring(0, size - 1) + a.substring(0, size)+'\n'
-  let middle = a.substring(0, size) + b.substring(0, size - 2) + '#\n'
-  let bottom = ''
-  for (let i = 0; i < size - 2; i++) {
-    top += c.substring(0, size - 2 - i)
-      + '#' + b.substring(0, size - 2)
-      + '#' + b.substring(0, (size + i) - (size))
-      + '#\n'
-    bottom += '#' + b.substring(0, size - 2)
-      + '#' + b.substring(0, size - 3 - i)
-      + '#\n'
-  }
-  bottom += a.substring(0, size)+'\n'
-
-  return top + middle + bottom
+  return result.join('\n')
 }
 
 /*
@@ -48,24 +41,24 @@ console.log(drawGift(4, '+'))
 */
 
 console.log(drawGift(5, '*'))
-/*
-    #####
-   #***##
-  #***#*#
- #***#**#
-#####***#
-#***#**#
-#***#*#
-#***##
-#####
-*/
+// /*
+//     #####
+//    #***##
+//   #***#*#
+//  #***#**#
+// #####***#
+// #***#**#
+// #***#*#
+// #***##
+// #####
+// */
 
 console.log(drawGift(1, '^'))
-/*
-#
-*/
+// /*
+// #
+// */
 
-console.log(drawGift(10, "%"))
+// console.log(drawGift(10, "%"))
 /*
          ##########
         #%%%%%%%%##
