@@ -2,7 +2,8 @@ function drawGift(size, symbol) {
   let result = []
 
   let f = '#'
-  for (let i = 1; i < size; i++) {
+  for (let i of [...Array.from({ length: size - 1 }).keys()]) {
+    i = i + 1
     let a = (' ').repeat(size - 1 - i)
     let b = symbol.repeat(size - 2)
     let c = symbol.repeat(size + i - size - 1)
