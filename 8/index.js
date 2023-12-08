@@ -3,14 +3,16 @@ function organizeGifts(gifts) {
   const chars = gifts.match(/[a-zA-Z]+/g);
 
   let result = ''
-  for (let i of [ ...Array.from({ length: nums.length }).keys() ]) {
+  for (const i of [ ...Array.from({ length: nums.length }).keys() ]) {
     let a = Math.floor(nums[i] / 50) 
     let b = Math.floor((nums[i] - (a * 50)) / 10) 
     let c = Math.floor((nums[i] - (a * 50) - (b * 10)))
 
     let d = ('['+chars[i]+']').repeat(a)
     let e = ('{'+chars[i]+'}').repeat(b)
-    let f = c > 0 ? ('('+chars[i].repeat(c)+')') : ''
+    let f = ('(').repeat(c > 0)
+    f += chars[i].repeat(c)
+    f += (')').repeat(c > 0)
     result += d + e + f
   }
 
