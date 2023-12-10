@@ -1,14 +1,18 @@
 function createChristmasTree(ornaments, height) {
-  let tree = ''
-  let line = ''
-  let j = 0
+  let objStart = {}
+  let objEnd = {}
+  let totalCicles = 0
   for (const i of [ ...Array.from({ length: height }).keys() ]) {
-    line = (' ').repeat(height - i - 1)
-    for (const z of [ ...Array.from({ length: i + 1 }).keys() ]) {
-      line += ornaments.at(j % ornaments.length) + ' '
-      j++
-    }
-    tree += line.substring(0, line.length - 1) + '\n'
+    totalCicles += i + 1
+    objStart[totalCicles - i] = (' ').repeat(height - i - 1)
+    objEnd[totalCicles] = '\n'
+  }
+
+  let tree = ''
+  for (const i of [ ...Array.from({ length: totalCicles }).keys() ]) {
+    tree += objStart[i + 1] ?? ''
+    tree += ornaments.at(i % ornaments.length)
+    tree += objEnd[i + 1] ?? ' '
   }
   return tree + (' ').repeat(height - 1) + '|\n'
 }
